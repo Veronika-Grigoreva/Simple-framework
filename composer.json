@@ -13,9 +13,6 @@
         "psr-4": {
             "Framework\\": "framework",
             "Application\\": "app/code"
-        },
-        "files": [
-            "app/config/database.php"
-        ]
+        }
     }
 }
