@@ -1,0 +1,21 @@
+{
+    "name": "grigoryeva/simple_framework",
+    "type": "framework",
+    "authors": [
+        {
+            "name": "Veronika Grigoryeva",
+            "email": "veronika.1997.grigoreva@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Framework\\": "framework",
+            "Application\\": "app/code"
+        },
+        "files": [
+            "app/config/database.php"
+        ]
+    }
+}
