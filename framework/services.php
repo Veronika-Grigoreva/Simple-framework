@@ -7,5 +7,6 @@
 return [
     \Framework\Session\Service::class,
     \Framework\Http\Service::class,
-    \Framework\Db\Service::class
+    \Framework\Db\Service::class,
+    \Framework\Controller\Service::class
 ];

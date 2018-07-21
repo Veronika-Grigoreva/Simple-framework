@@ -21,6 +21,12 @@ class Service implements ServiceInterface
     private static $host;
 
     /**
+     * Data post
+     * @var array
+     */
+    private static $postData;
+
+    /**
      * Uri path
      * @var string
      */
@@ -33,6 +39,7 @@ class Service implements ServiceInterface
     {
         self::setHost($_SERVER['SERVER_NAME']);
         self::setUriPath($_SERVER['REQUEST_URI']);
+        self::setPostData($_POST);
     }
 
     /**
@@ -73,5 +80,21 @@ class Service implements ServiceInterface
     public static function setUriPath($uriPath)
     {
         self::$uriPath = $uriPath;
+    }
+
+    /**
+     * @return array
+     */
+    public static function getPostData()
+    {
+        return self::$postData;
+    }
+
+    /**
+     * @param array $postData
+     */
+    public static function setPostData($postData)
+    {
+        self::$postData = $postData;
     }
 }

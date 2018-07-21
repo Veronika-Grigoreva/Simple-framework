@@ -1,4 +1,8 @@
 <?php
+/**
+ * Copyright © 2018 Simple Framework. All rights reserved.
+ * Author: Veronika Grigoryeva
+ */
 
 namespace Framework\Controller;
 
