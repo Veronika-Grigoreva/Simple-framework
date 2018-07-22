@@ -16,6 +16,7 @@ interface ApplicationInterface
      * Constants
      */
     const SERVICES_LIST_FILE_PATH = 'framework' . DIRECTORY_SEPARATOR . 'services.php';
+    const CLIENT_SERVICES_LIST_FILE_PATH = 'app' . DIRECTORY_SEPARATOR . 'services.php';
 
     /**
      * @return void

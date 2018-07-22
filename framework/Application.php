@@ -45,7 +45,11 @@ final class Application implements ApplicationInterface
     public static function getServicesList()
     {
         if (!self::$servicesList) {
-            self::$servicesList = include_once self::SERVICES_LIST_FILE_PATH;
+            $servicesList = include_once self::SERVICES_LIST_FILE_PATH;
+            $clientServicesList = include_once self::CLIENT_SERVICES_LIST_FILE_PATH;
+            $mergedServiceList = $servicesList + $clientServicesList;
+            ksort($mergedServiceList);
+            self::$servicesList = $mergedServiceList;
         }
 
         return self::$servicesList;
