@@ -5,9 +5,15 @@
  */
 
 return [
-    'test/run' => 'HelloWorld\Test:run',
-    'test/hello_world' => 'HelloWorld\Test:helloWorld',
-    'news' => 'News\News:allNews',
-    'news/id/(:num)' => 'News\News:news',
-    'news/id/(:num)/author/(:string)/year/(:num)' => 'News\News:fake'
+    'frontend' => [
+        'test/run' => 'HelloWorld\Test:run',
+        'test/hello_world' => 'HelloWorld\Test:helloWorld',
+        'news' => 'News\News:allNews',
+        'news/id/(:num)' => 'News\News:news',
+        'news/id/(:num)/author/(:string)/year/(:num)' => 'News\News:fake'
+    ],
+    'adminhtml' => [
+        'test/run2' => 'Test:run2'
+    ]
+
 ];
