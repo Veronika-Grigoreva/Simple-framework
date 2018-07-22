@@ -5,8 +5,8 @@
  */
 
 return [
-    \Framework\Session\Service::class,
-    \Framework\Http\Service::class,
-    \Framework\Db\Service::class,
-    \Framework\Controller\Service::class
+    0   => \Framework\Session\Service::class,
+    20  => \Framework\Http\Service::class,
+    40  => \Framework\Db\Service::class,
+    100 => \Framework\Controller\Service::class
 ];
