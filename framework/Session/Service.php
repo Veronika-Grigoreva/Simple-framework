@@ -23,10 +23,48 @@ class Service implements ServiceInterface
     }
 
     /**
-     * Empty required finish method
+     * Destroy flash session
      */
     public static function finish()
     {
-        return;
+        unset($_SESSION['flash']);
+    }
+
+    /**
+     * @param $name
+     * @return mixed
+     */
+    public static function getByName($name)
+    {
+        return $_SESSION[$name];
+    }
+
+    /**
+     * @param $name
+     * @param $value
+     * @return mixed
+     */
+    public static function setByName($name, $value)
+    {
+        return $_SESSION[$name] = $value;
+    }
+
+    /**
+     * @param $name
+     * @return mixed
+     */
+    public static function getFlashByName($name)
+    {
+        return $_SESSION['flash'][$name];
+    }
+
+    /**
+     * @param $name
+     * @param $value
+     * @return mixed
+     */
+    public static function setFlashByName($name, $value)
+    {
+        return $_SESSION['flash'][$name] = $value;
     }
 }

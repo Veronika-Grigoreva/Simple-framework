@@ -33,6 +33,12 @@ class Service implements ServiceInterface
     private static $uriPath;
 
     /**
+     * Is uri admin
+     * @var boolean
+     */
+    private static $isAdminUri;
+
+    /**
      * Run http service
      */
     public static function run()
@@ -40,6 +46,16 @@ class Service implements ServiceInterface
         self::setHost($_SERVER['SERVER_NAME']);
         self::setUriPath($_SERVER['REQUEST_URI']);
         self::setPostData($_POST);
+        $generalConfig = include_once self::GENERAL_CONFIG_PATH;
+
+        if (!$generalConfig['admin_path']) {
+            throw new \Exception('Your general config file is corrupted. Please fill admin URL.');
+        }
+        if (preg_match('/^\/' . $generalConfig['admin_path'] . '\//', self::getUriPath())) {
+            self::setIsAdminUri(true);
+        } else {
+            self::setIsAdminUri(false);
+        }
     }
 
     /**
@@ -96,5 +112,21 @@ class Service implements ServiceInterface
     public static function setPostData($postData)
     {
         self::$postData = $postData;
+    }
+
+    /**
+     * @return bool
+     */
+    public static function isAdminUri()
+    {
+        return self::$isAdminUri;
+    }
+
+    /**
+     * @param bool $isAdminUri
+     */
+    public static function setIsAdminUri($isAdminUri)
+    {
+        self::$isAdminUri = $isAdminUri;
     }
 }

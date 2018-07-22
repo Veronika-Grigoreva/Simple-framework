@@ -15,9 +15,11 @@ interface ServiceInterface
     /*
      * Constants
      */
+    const GENERAL_CONFIG_PATH = 'app' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'general.php';
     const DATABASE_CONFIG_PATH = 'app' . DIRECTORY_SEPARATOR . 'config' . DIRECTORY_SEPARATOR . 'database.php';
     const ROUTES_CONFIG_PATH = 'app' . DIRECTORY_SEPARATOR . 'routes.php';
     const CONTROLLERS_NAMESPACE = '\Application\Controller\\';
+    const ADMIN_CONTROLLERS_NAMESPACE = '\Application\Controller\Adminhtml\\';
     const MAX_ROUTE_VARIABLE = 3;
     const NUMBER_ROUTE_VARIABLE = '(:num)';
     const STRING_ROUTE_VARIABLE = '(:string)';

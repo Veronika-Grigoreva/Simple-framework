@@ -33,6 +33,15 @@ class Service implements ServiceInterface
         $uri = trim(\Framework\Http\Service::getUriPath(), '/');
         $routes = include_once self::ROUTES_CONFIG_PATH;
 
+        if (\Framework\Http\Service::isAdminUri()) {
+            $routes = $routes['adminhtml'];
+            $uri = explode('/', $uri);
+            unset($uri[0]);
+            $uri = implode('/', $uri);
+        } else {
+            $routes = $routes['frontend'];
+        }
+
         if (array_key_exists($uri, $routes)) {
             return [
                 'route' => $uri,
@@ -74,7 +83,6 @@ class Service implements ServiceInterface
                 }
             }
         }
-
         // TODO: create PageNotFound Exception
         throw new \Exception('Page Not Found');
     }
@@ -88,7 +96,13 @@ class Service implements ServiceInterface
             $request = self::findRoute();
             $actionPath = $request['path'];
             $actionArray = explode(':', $actionPath);
-            $controllerPath = self::CONTROLLERS_NAMESPACE . $actionArray[0];
+
+            if (\Framework\Http\Service::isAdminUri()) {
+                $controllerPath = self::ADMIN_CONTROLLERS_NAMESPACE . $actionArray[0];
+            } else {
+                $controllerPath = self::CONTROLLERS_NAMESPACE . $actionArray[0];
+            }
+
             $controller = new $controllerPath();
             $args = $request['args'];
 
